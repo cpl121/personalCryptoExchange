@@ -1,30 +1,43 @@
-<script setup>
-import HelloWorld from '@/components/HelloWorld.vue'
-</script>
-
 <template>
-    <div class="wrapper">
-      <HelloWorld />
-
-      <!-- <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav> -->
-    </div>
-
-  <!-- <RouterView /> -->
+  <main>
+    <px-header :links="links"/>
+    <router-view class="container px-5 sm:px-20 py-20 flex justify-center" />
+  </main>
 </template>
 
+<script>
+import PxHeader from './components/PxHeader.vue'
+
+export default {
+  name: 'app',
+  components: { PxHeader },
+  data () {
+    return {
+      links: [
+        {
+          title: 'BTC',
+          to: { name: 'coin-detail', params: { id: 'bitcoin' } }
+        },
+        {
+          title: 'ETH',
+          to: { name: 'coin-detail', params: { id: 'ethereum' } }
+        },
+        {
+          title: 'XRP',
+          to: { name: 'coin-detail', params: { id: 'ripple' } }
+        }
+      ]
+    }
+  }
+  }
+</script>
+
 <style>
-@import '@/assets/base.css';
-
 #app {
-  max-width: 1280px;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-
-  font-weight: normal;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
-
 </style>
